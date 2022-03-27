@@ -38,3 +38,17 @@
   gather_facts: no
   roles:
       - { role: install_apps }
+
+- name: Lockdown node
+  hosts: nodes
+  become: True
+  gather_facts: no
+  roles:
+      - { role: lockdown }
+
+- name: Configure apps
+  hosts: nodes
+  become: True
+  gather_facts: no
+  roles:
+      - { role: config_apps }
