@@ -16,12 +16,12 @@
   roles:
       - { role: config_ssh }
 
-# - name: Configure NTP
-#   hosts: nodes
-#   become: True
-#   gather_facts: no
-#   roles:
-#       - { role: config_ntp }
+- name: Configure NTP
+  hosts: nodes
+  become: True
+  gather_facts: no
+  roles:
+      - { role: config_ntp }
 
 # - name: Configure DNS
 #   hosts: nodes

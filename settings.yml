@@ -12,3 +12,5 @@ ssh_login_password: !vault |
           3531
 
 my_ssh_pub_key: "/home/earth/.ssh/id_ed25519.pub"
+
+ntp_timezone: America/New_York
