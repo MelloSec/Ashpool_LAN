@@ -1,0 +1,23 @@
+- name: include vars
+  include_vars:
+    file: ../../settings.yml
+    name: settings
+
+- name: Adding the user "{{ settings.username }}"
+  user:
+    name: "{{ settings.username }}"
+    password: "{{ settings.username | password_hash('sha512') }}"
+    #password: "{{ 'Tessier-Ashpool' | password_hash('sha512') }}"
+    groups:
+      - sudo
+    generate_ssh_key: yes
+    ssh_key_type: ed25519
+    ssh_key_bits: 4096
+    ssh_key_file: .ssh/id_ed25519
+    ssh_key_comment: "{{ settings.username }}@{{ settings.hostname }}"
+    state: present
+    shell: /bin/bash
+
+
+
+

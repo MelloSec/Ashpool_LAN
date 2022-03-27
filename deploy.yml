@@ -1,0 +1,12 @@
+---
+
+################ create_users ##################
+
+- name: Create users on hosts
+  hosts: nodes
+  become: True
+  gather_facts: no
+  roles:
+      - { role: create_users }
+
+

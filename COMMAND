@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ansible-playbook deploy.yml --ask-become-pass -i inventory -k --ask-vault-pass $1
+
