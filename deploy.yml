@@ -13,42 +13,40 @@
   hosts: nodes
   become: True
   gather_facts: no
-  include: settings.yml
   roles:
       - { role: config_ssh }
 
-- name: Configure NTP
-  hosts: nodes
-  become: True
-  gather_facts: no
-  roles:
-      - { role: config_ntp }
+# - name: Configure NTP
+#   hosts: nodes
+#   become: True
+#   gather_facts: no
+#   roles:
+#       - { role: config_ntp }
 
-- name: Configure DNS
-  hosts: nodes
-  become: True
-  gather_facts: no
-  include/: settings.yml
-  roles:
-      - { role: config_dns }
+# - name: Configure DNS
+#   hosts: nodes
+#   become: True
+#   gather_facts: no
+#   roles:
+#       - { role: config_dns }
 
-- name: Install apps
-  hosts: nodes
-  become: True
-  gather_facts: no
-  roles:
-      - { role: install_apps }
+# - name: Install apps
+#   hosts: nodes
+#   become: True
+#   gather_facts: no
+#   roles:
+#       - { role: install_apps }
 
-- name: Lockdown node
-  hosts: nodes
-  become: True
-  gather_facts: no
-  roles:
-      - { role: lockdown }
+# - name: Lockdown node
+#   hosts: nodes
+#   become: True
+#   gather_facts: no
+#   roles:
+#       - { role: lockdown }
 
-- name: Configure apps
-  hosts: nodes
-  become: True
-  gather_facts: no
-  roles:
-      - { role: config_apps }
+# - name: Configure apps
+#   hosts: nodes
+#   become: True
+#   gather_facts: no
+#   roles:
+#       - { role: config_apps }
