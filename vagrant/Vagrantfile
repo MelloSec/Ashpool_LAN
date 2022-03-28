@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   
       ash1.vm.provider :virtualbox do |v|
         v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-        v.customize ["modifyvm", :id, "--memory", 512]
+        v.customize ["modifyvm", :id, "--memory", 1024]
         v.customize ["modifyvm", :id, "--name", "ash1"]
       end
     end
@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   
 #       ash2.vm.provider :virtualbox do |v|
 #         v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-#         v.customize ["modifyvm", :id, "--memory", 512]
+#         v.customize ["modifyvm", :id, "--memory", 1024]
 #         v.customize ["modifyvm", :id, "--name", "ash2"]
 #       end
 #     end
