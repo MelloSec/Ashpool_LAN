@@ -23,19 +23,19 @@
 #   roles:
 #       - { role: config_ntp }
 
-- name: Configure DNS
-  hosts: nodes
-  become: True
-  gather_facts: no
-  roles:
-      - { role: config_dns }
-
-# - name: Install apps
+# - name: Configure DNS
 #   hosts: nodes
 #   become: True
 #   gather_facts: no
 #   roles:
-#       - { role: install_apps }
+#       - { role: config_dns }
+
+- name: Install apps
+  hosts: nodes
+  become: True
+  gather_facts: no
+  roles:
+      - { role: install_apps }
 
 # - name: Lockdown node
 #   hosts: nodes

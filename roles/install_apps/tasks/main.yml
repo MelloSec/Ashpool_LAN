@@ -1,0 +1,14 @@
+- name: include vars
+  include_vars:
+    file: ../../settings.yml
+    name: settings
+
+
+
+- name: install packages
+  become: true
+  dnf:
+    state: present
+    name:
+     - tcsh
+     - htop
