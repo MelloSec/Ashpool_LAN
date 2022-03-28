@@ -6,7 +6,7 @@
 - hosts: all
   roles:
   - systemd-timesyncd
-    timesync_timezone: "{{ settings.timezone }}" 
+    timesync_timezone: "{{ settings.timesync_timezone }}" 
     timesync_ntp_hosts:
       - time.cloudflare.com
       - time.google.com
