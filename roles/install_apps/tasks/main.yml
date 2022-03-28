@@ -3,12 +3,6 @@
     file: ../../settings.yml
     name: settings
 
-
-
-- name: install packages
-  become: true
-  dnf:
-    state: present
-    name:
-     - tcsh
-     - htop
+- name: install system updates for ubuntu systems
+  apt: upgrade=dist update_cache=yes
+  when: ansible_distribution == "Ubuntu"
