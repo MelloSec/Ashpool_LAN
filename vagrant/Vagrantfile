@@ -4,7 +4,8 @@ Vagrant.configure("2") do |config|
       ash1.vm.hostname = 'ash1'
       ash1.vm.box_url = "bento/ubuntu-20.04"
   
-      ash1.vm.network :private_network, ip: "192.168.5.55"
+      # Way to do a bridged network commented out to the right
+      ash1.vm.network :private_network, ip: "192.168.5.55"  # ash1.vm.network :public_network, ip: "192.168.1.101"
   
       ash1.vm.provider :virtualbox do |v|
         v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
@@ -12,21 +13,21 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--name", "ash1"]
       end
     end
+  end # <-- Comment this "end" and uncomment the next block for these ashy ladies  
+#     config.vm.define "ash2" do |ash2|
+#       ash2.vm.box = "bento/ubuntu-20.04"
+#       ash2.vm.hostname = 'ash2'
+#       ash2.vm.box_url = "bento/ubuntu-20.04"
   
-    config.vm.define "ash2" do |ash2|
-      ash2.vm.box = "bento/ubuntu-20.04"
-      ash2.vm.hostname = 'ash2'
-      ash2.vm.box_url = "bento/ubuntu-20.04"
+#       ash2.vm.network :private_network, ip: "192.168.6.66"
   
-      ash2.vm.network :private_network, ip: "192.168.6.66"
-  
-      ash2.vm.provider :virtualbox do |v|
-        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-        v.customize ["modifyvm", :id, "--memory", 512]
-        v.customize ["modifyvm", :id, "--name", "ash2"]
-      end
-    end
-  end
+#       ash2.vm.provider :virtualbox do |v|
+#         v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+#         v.customize ["modifyvm", :id, "--memory", 512]
+#         v.customize ["modifyvm", :id, "--name", "ash2"]
+#       end
+#     end
+#   end
 
 ######################################
 #### Example vagrant file bidness ####
