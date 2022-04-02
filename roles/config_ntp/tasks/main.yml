@@ -13,9 +13,6 @@
     name: systemd-timesyncd.service
     state: stopped
 
-#- name: Copy over the timesyncd config
-#  template: src=../templates/timesyncd.conf dest=/etc/systemd/timesyncd.conf
-
 - name: update ntp primary server
   ansible.builtin.replace:
     path: /etc/systemd/timesyncd.conf
@@ -33,30 +30,11 @@
     name: systemd-timesyncd.service
     state: started
 
+- name: Test that time is synced
+  shell: timedatectl | grep "System clock synchronized" | awk '{print$4}'
+  register: result
+  failed_when: "'hello' in result.stdout_lines"
 
-
-#
-#- name: import systemd-timesyncd role
-#  import_role:
-#    name: idiv-biodiversity.systemd_timesyncd
-#
-#- name: Configure NTP
-#  idiv-biodiversity.systemd_timesyncd:
-#    system_timezone: America/New_York
-#    ntp_servers:
-#      - time-a-g.nist.gov
-#      - time-b-g.nist.gov
-#    
-    #stuvusit.timesync_timezone: America/New_York
-    #timesync_ntp_hosts:
-    #  - time-a-g.nist.gov
-    #  - time-b-g.nist.gov
-
-
-#- name: Configuring systemd NTP
-#  roles:
-#  - stuvusit.systemd-timesyncd
-#  vars:
-#    timesync_timezone: America/New_York
- 
-
+- name: output result must be "yes"
+  debug:
+    msg: "{{ result.stdout_lines }}"

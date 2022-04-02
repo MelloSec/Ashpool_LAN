@@ -11,9 +11,9 @@
 - name: adjust dns
   yedit:
     src: /etc/netplan/00-installer-config.yaml
-    #key: network.ethernets.*.nameservers.addresses
     key: network.ethernets.{{ settings.network_interface_name }}.nameservers.addresses
     value: "{{ settings.dns_servers }}"
 
 - name: apply netplan
   command: netplan apply
+
