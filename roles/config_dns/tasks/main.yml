@@ -1,0 +1,19 @@
+---
+- name: include vars
+  include_vars:
+    file: ../../settings.yml
+    name: settings
+
+- name: import yedit
+  import_role:
+    name: kwoodson.yedit
+
+- name: adjust dns
+  yedit:
+    src: /etc/netplan/00-installer-config.yaml
+    #key: network.ethernets.*.nameservers.addresses
+    key: network.ethernets.{{ settings.network_interface_name }}.nameservers.addresses
+    value: "{{ settings.dns_servers }}"
+
+- name: apply netplan
+  command: netplan apply

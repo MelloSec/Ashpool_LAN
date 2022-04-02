@@ -1,8 +1,8 @@
 ---
 #settings for deployments
 
-username: mellonaut
-hostname: ash
+username: hacked_baked
+hostname: vagrant
 ssh_login_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           32343839363936393431303932306464666632386139323237353638643963623833313866336566
@@ -10,4 +10,11 @@ ssh_login_password: !vault |
           30326533373630646638343530633939393936646366343662643434353965666637323337303266
           3537613865346265340a343038633833366433636363316231366364333333346361353239353537
           3531
+ssh_public_key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+network_interface_name: ens33
+dns_servers: "[8.8.8.8, 8.8.4.4]"
+timezone: America/New_York
+ntp_svr_primary: time-a-g.nist.gov
+ntp_svr_fallback: time-b-g.nist.gov
+
 

@@ -1,0 +1,62 @@
+---
+- name: include vars
+  include_vars:
+    file: ../../settings.yml
+    name: settings
+
+- name: Configure NTP community
+  community.general.timezone:
+    name: "{{ settings.timezone }}"
+
+- name: Make sure timesyncd is stopped
+  systemd:
+    name: systemd-timesyncd.service
+    state: stopped
+
+#- name: Copy over the timesyncd config
+#  template: src=../templates/timesyncd.conf dest=/etc/systemd/timesyncd.conf
+
+- name: update ntp primary server
+  ansible.builtin.replace:
+    path: /etc/systemd/timesyncd.conf
+    regexp: '^#NTP=.*'
+    replace: "NTP={{ settings.ntp_svr_primary }}"
+
+- name: update ntp fallback server
+  ansible.builtin.replace:
+    path: /etc/systemd/timesyncd.conf
+    regexp: '^#FallbackNTP=.*'
+    replace: "FallbackNTP={{ settings.ntp_svr_fallback }}"
+
+- name: Make sure timesyncd is started
+  systemd:
+    name: systemd-timesyncd.service
+    state: started
+
+
+
+#
+#- name: import systemd-timesyncd role
+#  import_role:
+#    name: idiv-biodiversity.systemd_timesyncd
+#
+#- name: Configure NTP
+#  idiv-biodiversity.systemd_timesyncd:
+#    system_timezone: America/New_York
+#    ntp_servers:
+#      - time-a-g.nist.gov
+#      - time-b-g.nist.gov
+#    
+    #stuvusit.timesync_timezone: America/New_York
+    #timesync_ntp_hosts:
+    #  - time-a-g.nist.gov
+    #  - time-b-g.nist.gov
+
+
+#- name: Configuring systemd NTP
+#  roles:
+#  - stuvusit.systemd-timesyncd
+#  vars:
+#    timesync_timezone: America/New_York
+ 
+

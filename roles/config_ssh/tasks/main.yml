@@ -1,0 +1,12 @@
+---
+- name: include vars
+  include_vars:
+    file: ../../settings.yml
+    name: settings
+
+- name: Set authorized key taken from file
+  ansible.posix.authorized_key:
+    user: "{{ settings.username }}"
+    state: present
+    key: "{{ settings.ssh_public_key }}"
+

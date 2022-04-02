@@ -1,6 +1,5 @@
 ---
-
-################ create_users ##################
+################ setup_system ##################
 
 - name: Create users on hosts
   hosts: nodes
@@ -8,33 +7,7 @@
   gather_facts: no
   roles:
       - { role: create_users }
-
-- name: Configure ssh on hosts
-  hosts: nodes
-  become: True
-  gather_facts: no
-  include: settings.yml
-  roles:
       - { role: config_ssh }
-
-- name: Configure NTP
-  hosts: nodes
-  become: True
-  gather_facts: no
-  roles:
+      - { role: config_dns }
       - { role: config_ntp }
 
-- name: Configure DNS
-  hosts: nodes
-  become: True
-  gather_facts: no
-  include/: settings.yml
-  roles:
-      - { role: config_dns }
-
-- name: Install apps
-  hosts: nodes
-  become: True
-  gather_facts: no
-  roles:
-      - { role: install_apps }

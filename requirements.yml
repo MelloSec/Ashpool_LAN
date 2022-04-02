@@ -1,0 +1,9 @@
+---
+# To install you must run "ansible-galaxy collection install -r requirements.yml"
+roles:
+  - name: kwoodson.yedit
+
+# To install you must run "ansible-galaxy install -r requirements.yml"
+collections:
+  - name: ansible.posix
+
