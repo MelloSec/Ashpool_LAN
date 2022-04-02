@@ -37,12 +37,12 @@
 #   roles:
 #       - { role: config_os }
 
-- name: Install apps
-  hosts: nodes
-  become: True
-  gather_facts: no
-  roles:
-      - { role: install_apps }
+# - name: Install apps
+#   hosts: nodes
+#   become: True
+#   gather_facts: no
+#   roles:
+#       - { role: install_apps }
 
 # - name: Lockdown node
 #   hosts: nodes
@@ -51,9 +51,12 @@
 #   roles:
 #       - { role: lockdown }
 
-# - name: Configure apps
+# - name: Fail2Ban
 #   hosts: nodes
 #   become: True
 #   gather_facts: no
+#   vars_files:
+#     - settings.yml
 #   roles:
-#       - { role: config_apps }
+#       - { role: geerlingguy.security }
+
