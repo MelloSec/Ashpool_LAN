@@ -1,0 +1,8 @@
+---
+- name: include vars
+  include_vars:
+    file: ../../settings.yml
+    name: settings
+- include: upgrade.yml
+- include: locale.yml
+- include: zsh.yml

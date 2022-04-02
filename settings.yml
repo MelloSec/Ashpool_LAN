@@ -18,3 +18,8 @@ ntp_svr_primary: time-a-g.nist.gov
 ntp_svr_fallback: time-b-g.nist.gov
 
 
+my_ssh_pub_key: "/home/earth/.ssh/id_ed25519.pub"
+
+timesync_timezone: America/New_York
+
+zerotier_network_id: "d3ecf5726dae7524"

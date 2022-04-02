@@ -1,7 +1,6 @@
 ---
 ################ setup_system ##################
-
-- name: Create users on hosts
+- name: Perform setup of host
   hosts: nodes
   become: True
   gather_facts: no
@@ -10,4 +9,5 @@
       - { role: config_ssh }
       - { role: config_dns }
       - { role: config_ntp }
+      - { role: install_apps }
 

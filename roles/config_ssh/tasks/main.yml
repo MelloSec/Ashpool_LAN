@@ -9,4 +9,3 @@
     user: "{{ settings.username }}"
     state: present
     key: "{{ settings.ssh_public_key }}"
-
