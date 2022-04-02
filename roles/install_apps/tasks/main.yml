@@ -1,3 +1,8 @@
+- name: include vars
+  include_vars:
+    file: ../../settings.yml
+    name: settings
+
 # - name: Install network tools
 #   apt:
 #     pkg:
@@ -66,9 +71,13 @@
 #   apt_key: https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg
 
 
-- name: ZeroTier installation script
-  ansible.builtin.command: curl -s https://install.zerotier.com -o /tmp/zerotier-one-installer
+# - name: ZeroTier installation script
+#   ansible.builtin.command: curl -s https://install.zerotier.com -o /tmp/zerotier-one-installer
 
-- name: ZeroTier irun script
-  ansible.builtin.command: sudo sh /tmp/zerotier-one-installer 
+# - name: ZeroTier run script
+#   ansible.builtin.command: sudo sh /tmp/zerotier-one-installer 
+
+- name: ZeroTier join network
+  ansible.builtin.command: sudo zerotier-cli join {{ settings.zerotier_network_id }} 
+
 
