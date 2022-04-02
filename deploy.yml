@@ -30,12 +30,12 @@
 #   roles:
 #       - { role: config_dns }
 
-- name: Configure OS
-  hosts: nodes
-  become: True
-  gather_facts: no
-  roles:
-      - { role: config_os }
+# - name: Configure OS
+#   hosts: nodes
+#   become: True
+#   gather_facts: no
+#   roles:
+#       - { role: config_os }
 
 - name: Install apps
   hosts: nodes
