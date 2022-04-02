@@ -1,28 +1,63 @@
-- name: zsh
-  apt:
-    name: zsh
-    state: present
-
-- name: Update repositories cache and install "foo" package
-  apt:
-    name: foo
-    update_cache: yes
-
-- name: Remove "foo" package
-  apt:
-    name: foo
-    state: absent
-
-- name: Install the package "foo"
-  apt:
-    name: foo
-
-- name: Install a list of packages
+- name: Install network tools
   apt:
     pkg:
-    - foo
-    - foo-tools
+    - 'nmap'
+    - 'tshark'
+    - 'ncat'
+    - 'rsync'
+    - 'arp-scan'
+    - 'arping'
+    - 'arptables'
+    - 'bmon'
+    - 'dnsutils'
+    - 'ifstat'
+    - 'iftop'
+    - 'iperf'
+    - 'lldpd'
+    - 'lsof'
+    - 'nbtscan'
+    - 'netcat'
+    - 'netdiscover'
+    - 'netdiag'
+    - 'nethogs'
+    - 'netperf'
+    - 'netsniff-ng'
+    - 'nfdump'
+    - 'ngrep'
+    - 'nload'
+    - 'nmap'
+    - 'socat'
+    - 'tcpdump'
+    - 'tcpflow'
+    - 'tcpstat'
+    - 'tcptrace'  
+    - 'tcptrack'
+    - 'telnet'
+    - 'traceroute'
 
-- name: Install the version '1.00' of package "foo"
+          #Install docker stuff
+
+- name: Install prerequisites
   apt:
-    name: foo=1.00
+    name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2' ,'software-properties-common']
+    update_cache: 
+- name: Add Docker GPG key
+  apt_key: url=https://download.docker.com/linux/ubuntu/
+- name: Add Docker APT repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} sta
+- name: Install Docker
+  apt:
+    name: docker-ce
+    update_cache: 
+- name: Install prerequisites
+  apt:
+    name: ['python3-pip', 'python3-setuptools', 'virtualenv']
+    update_cache: 
+- name: Install docker-compose
+  pip:
+    name: docker-comp
+- name: Remove snap docker instance
+  command: sudo snap remove doc
+- name: Add {{ vm_settings.username }} to sudoers group
+  command: sudo usermod -aG docker "{{ vm_settings.username }}"
