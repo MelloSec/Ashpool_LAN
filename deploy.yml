@@ -10,4 +10,6 @@
       - { role: config_dns }
       - { role: config_ntp }
       - { role: install_apps }
+      - { role: config_os }
+
 
