@@ -1,8 +1,9 @@
 ---
 #settings for deployments
 
-username: hacked_baked
-hostname: vagrant
+username: mellonaut
+# username: hacked_baked
+hostname: GayKeyHoleSex
 ssh_login_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           32343839363936393431303932306464666632386139323237353638643963623833313866336566

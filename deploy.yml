@@ -8,6 +8,7 @@
       - { role: create_users }
       - { role: config_ssh }
       - { role: config_dns }
+      - { role: config_os }
       - { role: config_ntp }
       - { role: install_apps }
 

@@ -3,79 +3,74 @@
     file: ../../settings.yml
     name: settings
 
-# - name: Install network tools
-#   apt:
-#     pkg:
-#     - 'nmap'
-#     - 'tshark'
-#     - 'ncat'
-#     - 'rsync'
-#     - 'arp-scan'
-#     - 'arping'
-#     - 'arptables'
-#     - 'bmon'
-#     - 'dnsutils'
-#     - 'ifstat'
-#     - 'iftop'
-#     - 'iperf'
-#     - 'lldpd'
-#     - 'lsof'
-#     - 'nbtscan'
-#     - 'netcat'
-#     - 'netdiscover'
-#     - 'netdiag'
-#     - 'nethogs'
-#     - 'netperf'
-#     - 'netsniff-ng'
-#     - 'nfdump'
-#     - 'ngrep'
-#     - 'nload'
-#     - 'nmap'
-#     - 'socat'
-#     - 'tcpdump'
-#     - 'tcpflow'
-#     - 'tcpstat'
-#     - 'tcptrace'  
-#     - 'tcptrack'
-#     - 'telnet'
-#     - 'traceroute'
+- name: Install network tools
+  apt:
+    pkg:
+    - 'nmap'
+    - 'tshark'
+    - 'ncat'
+    - 'rsync'
+    - 'arp-scan'
+    - 'arping'
+    - 'arptables'
+    - 'bmon'
+    - 'dnsutils'
+    - 'ifstat'
+    - 'iftop'
+    - 'iperf'
+    - 'lldpd'
+    - 'lsof'
+    - 'nbtscan'
+    - 'netcat'
+    - 'netdiscover'
+    - 'netdiag'
+    - 'nethogs'
+    - 'netperf'
+    - 'nfdump'
+    - 'ngrep'
+    - 'nload'
+    - 'nmap'
+    - 'socat'
+    - 'tcpdump'
+    - 'tcpflow'
+    - 'tcpstat'
+    - 'tcptrace'  
+    - 'tcptrack'
+    - 'telnet'
+    - 'traceroute'
 
-# - name: Install prerequisites
-#   apt:
-#     name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2' ,'software-properties-common']
-#     update_cache: 
+- name: Install prerequisites
+  apt:
+    name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2' ,'software-properties-common']
+    update_cache:
 
-# - name: Add Docker GPG key
-#   apt_key:
-#     url: https://download.docker.com/linux/ubuntu/gpg
+- name: Add Docker GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
 
-# - name: Add Docker Repository
-#   apt_repository:
-#     repo: deb https://download.docker.com/linux/ubuntu focal stable
-#     state: present
+- name: Add Docker Repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
+    state: present
 
-# - name: Install Docker CE
-#   apt:
-#     name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
-#     update_cache: yes
+- name: Install Docker CE
+  apt:
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
+    update_cache: yes
 
-# - name: Install prerequisites for docker-compose
-#   apt:
-#     name: ['python3-pip', 'python3-setuptools', 'virtualenv']
+- name: Install prerequisites for Docker-Compose
+  apt:
+    name: ['python3-pip', 'python3-setuptools', 'virtualenv']
 
-# - name: Install docker-compose
-#   pip:
-#     name: docker-compose
+- name: Install Docker-Compose
+  pip:
+    name: docker-compose
 
-# - name: Add ZeroTier GPG key
-#   apt_key: https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg
+- name: ZeroTier installation script
+  ansible.builtin.command: curl -s https://install.zerotier.com -o /tmp/zerotier-one-installer
 
-
-# - name: ZeroTier installation script
-#   ansible.builtin.command: curl -s https://install.zerotier.com -o /tmp/zerotier-one-installer
-
-# - name: ZeroTier run script
-#   ansible.builtin.command: sudo sh /tmp/zerotier-one-installer 
+- name: ZeroTier run script
+  ansible.builtin.command: sudo sh /tmp/zerotier-one-installer 
 
 - name: ZeroTier join network
   ansible.builtin.command: sudo zerotier-cli join {{ settings.zerotier_network_id }} 
