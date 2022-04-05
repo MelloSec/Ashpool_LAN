@@ -1,0 +1,1 @@
+terraform apply -auto-approve -var "do_token=${DO_PAT}"

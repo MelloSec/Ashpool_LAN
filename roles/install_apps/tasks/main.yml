@@ -18,6 +18,7 @@
     - 'ifstat'
     - 'iftop'
     - 'iperf'
+    - 'libpcap-dev'
     - 'lldpd'
     - 'lsof'
     - 'nbtscan'
@@ -38,6 +39,7 @@
     - 'tcptrack'
     - 'telnet'
     - 'traceroute'
+    - 'golang'
 
 - name: Install prerequisites
   apt:
