@@ -1,0 +1,5 @@
+terraform init 
+terraform plan 
+terraform apply -auto-approve -var "do_token=${DO_PAT}"
+
+Have your digital ocean token ready 
