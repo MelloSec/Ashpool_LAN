@@ -1,6 +1,6 @@
 #                          Ashpool - Automated Scan Host 
 
-# <[-------------------------------PCAP<>CITY-------------------------------------]>
+# <[-------------------------------PCAP<>CITY-----------------------------------]>
 ## - This repo holds playbooks for deploying network sensors via Ansible
 
 ## - How to use this repo:
