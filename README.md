@@ -1,6 +1,6 @@
 # Ashpool - Automated Scan Host 
 
-### <[-------------------------------PCAP<x>CITY-------------------------------------]>
+### <[-------------------------------PCAP<>CITY-------------------------------------]>
 ## - This repo holds playbooks for deploying security scanning vms on local hosts.
 ## - How to use this repo:
    ## - install ansible-galaxy requirements
