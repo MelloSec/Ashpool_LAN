@@ -3,8 +3,16 @@ ansible_connection=ssh
 ansible_user=vagrant
 ansible_ssh_pass=vagrant
 
+[controller]:
+172.22.112.39 # wintermute
+sudo apt update && sudo apt upgrade -y winterm
 [nodes]
-192.168.1.133
-# 192.168.1.142
 # 192.168.1.55
-# 192.168.6.66
+
+
+[zerotier]
+172.22.232.105 # ash3
+172.22.217.150 # ash1
+
+
+
