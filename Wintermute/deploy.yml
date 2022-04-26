@@ -1,0 +1,20 @@
+---
+################ setup_system ##################
+- name: Perform setup of host
+  hosts: localhost
+  connection: local 
+  become: True
+  gather_facts: no
+  roles:
+      # - { role: create_users }
+      # - { role: config_ssh }
+      # - { role: config_dns }
+      # - { role: config_os }
+      # - { role: config_ntp }
+      # - { role: install_apps }
+        - { role: docker }
+        - { role: os }
+        - { role: viasite-ansible.zsh, zsh_shared: yes}
+        - { role: arillso.traefik }
+        - { role: ansible-elasticsearch }
+
