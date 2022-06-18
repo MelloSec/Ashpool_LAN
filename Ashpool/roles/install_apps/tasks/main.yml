@@ -68,13 +68,13 @@
   pip:
     name: docker-compose
 
-- name: ZeroTier installation script
-  ansible.builtin.command: curl -s https://install.zerotier.com -o /tmp/zerotier-one-installer
+# - name: ZeroTier installation script
+#   ansible.builtin.command: curl -s https://install.zerotier.com -o /tmp/zerotier-one-installer
 
-- name: ZeroTier run script
-  ansible.builtin.command: sudo sh /tmp/zerotier-one-installer 
+# - name: ZeroTier run script
+#   ansible.builtin.command: sudo sh /tmp/zerotier-one-installer 
 
-- name: ZeroTier join network
-  ansible.builtin.command: sudo zerotier-cli join {{ settings.zerotier_network_id }} 
+# - name: ZeroTier join network
+#   ansible.builtin.command: sudo zerotier-cli join {{ settings.zerotier_network_id }} 
 
 
