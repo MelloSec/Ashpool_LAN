@@ -1,5 +1,5 @@
 #!/bin/bash 
-# Script to configure Analytics Statiopn
+# Script to bootstrap control node
 
 sudo apt update -y
 sudo apt upgrade -y
