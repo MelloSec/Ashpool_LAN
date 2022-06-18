@@ -15,8 +15,7 @@ This repo holds playbooks for deploying network sensors via Ansible
 ### Usage 
    - to run: `./COMMAND`, enter ssh, become, and vault password.
 
-### Terraform
-   - [Terraform][terraform] file to use for DNS on the [ZeroTier][zeroTier] interfaces using [DigitalOcean][digitalOcean] as a provider.
+
 
 
 ## Road-Map
@@ -24,6 +23,8 @@ This repo holds playbooks for deploying network sensors via Ansible
 ### New Features 
 - Automate the [**ZeroTier**][zeroTier] Network/DNS with [Terraform][terraform] and [Ansible][ansible] as well using outputs from one in the other.
 
+### Terraform
+   - [Terraform][terraform] file to use for DNS on the [ZeroTier][zeroTier] interfaces using [DigitalOcean][digitalOcean] as a provider.
 
 [zeroTier]: https://www.zerotier.com/ "ZeroTier - Distributed Network Hypervisor"
 [zeroTierGitHub]: https://github.com/zerotier?type=source "ZeroTier - GitHub Organization & Repos"
